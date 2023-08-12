@@ -75,12 +75,5 @@ public class Persona implements Serializable {
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-	@Override
-	public String toString() {
-		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", telefono=" + telefono + ", saldo=" + saldo + "]";
-	}
-	
-	
-	
+
 }

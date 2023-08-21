@@ -34,7 +34,14 @@ public class ControladorInicio {
 		logger.info("usuario login: " + user);
 		var personas = personaService.listarPersonas();
 		model.addAttribute("personas", personas);
-
+		
+		var saldoTotal = 0D;
+		
+		for(var p: personas) {
+			saldoTotal += p.getSaldo();
+		}
+		model.addAttribute("saldoTotal", saldoTotal);
+		model.addAttribute("totalClientes", personas.size());
 		return "index";
 	}
 	
@@ -60,9 +67,15 @@ public class ControladorInicio {
 		return "modificar";
 	}
 	
-	@GetMapping("/eliminar/{idPersona}")
+	/*@GetMapping("/eliminar/{idPersona}")
 	public String eliminar(Persona persona,Model model) {
 		personaService.eliminar(persona);
 		return "redirect:/";
-	}
+	}*/
+	
+    @GetMapping("/eliminar")
+    public String eliminar(Persona persona){
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
 }
